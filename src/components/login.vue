@@ -56,7 +56,9 @@ export default {
         async valid=>{
           if(!valid) return;
           const {data:result}=await this.$http.post('login',this.loginForm);
-          if(result.meta.status!==200) return this.$message.error('登陆失败！');
+          if(result.meta.status!==200) {
+            return this.$message.error('登陆失败！');
+          }
           this.$message.success('登陆成功！');
           window.sessionStorage.setItem("token",result.data.token);
           this.$router.push("/home");

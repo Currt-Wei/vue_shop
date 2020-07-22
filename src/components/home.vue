@@ -24,6 +24,7 @@
           :collapse="isCollapse"
           :collapse-transition="false"
           :router="true"
+          :default-active="activePath"
           >
           <!-- 一级菜单 -->
           <el-submenu :index="item.id + ''" v-for="item in menulist" :key="item.id">
@@ -33,7 +34,8 @@
               <span>{{item.authName}}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item :index="'/'+subItem.path+''" v-for="subItem in item.children" :key="subItem.id">
+            <el-menu-item :index="'/'+subItem.path+''" v-for="subItem in item.children" :key="subItem.id"
+            @click="saveNavState('/'+subItem.path+'')">
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span>{{ subItem.authName }}</span>
@@ -64,26 +66,33 @@ export default {
         '145':'iconfont icon-baobiao',
       },
       isCollapse:false,
+      activePath:''
     }
   },
   created() {
     this.getMenuList();
+    this.activePath=window.sessionStorage.getItem('activePath');
   },
   methods:{
     logout(){
       window.sessionStorage.clear();
-      // this.$router.push('/login');
+      this.$router.push('/login');
     },
     // 获取所有的菜单
     async getMenuList(){
       const {data:res} = await this.$http.get('menus');
       if(res.meta.status!==200) return this.$message.error(res.meta.msg);
       this.menulist=res.data;
-      console.log(res);
+      // console.log(res);
     },
     // 点击折叠
     toggleCollapse(){
       this.isCollapse=!this.isCollapse;
+    },
+    // 保存激活链接地址
+    saveNavState(activePath){
+      window.sessionStorage.setItem('activePath',activePath);
+      this.activePath=activePath;
     }
   }
 }

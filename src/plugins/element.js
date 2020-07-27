@@ -1,12 +1,18 @@
 import Vue from 'vue'
 import { Button, TableColumn, Tooltip, Dialog } from 'element-ui'
-import { Form, FormItem} from 'element-ui'
+import { Form, FormItem } from 'element-ui'
 import { Input } from 'element-ui'
-import { Message,
+import {
+  Message,
   Container,
   Header,
   Aside,
-  Main,Menu,Submenu,MenuItem,Breadcrumb,BreadcrumbItem,
+  Main,
+  Menu,
+  Submenu,
+  MenuItem,
+  Breadcrumb,
+  BreadcrumbItem,
   Card,
   Select,
   Option,
@@ -15,9 +21,12 @@ import { Message,
   Table,
   Switch,
   Pagination,
-  MessageBox
- } from 'element-ui'
+  MessageBox,
+  Tag,
+  Tree
+} from 'element-ui'
 // 注册为全局可用
+Vue.use(Option)
 Vue.use(Button)
 Vue.use(Form)
 Vue.use(FormItem)
@@ -42,5 +51,8 @@ Vue.use(Switch)
 Vue.use(Pagination)
 Vue.use(Dialog)
 Vue.use(MessageBox)
-Vue.prototype.$message=Message;
-Vue.prototype.$confirm=MessageBox.confirm;
+Vue.use(Tag)
+Vue.use(Tree)
+Vue.use(Select)
+Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm

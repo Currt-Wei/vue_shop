@@ -16,7 +16,8 @@ module.exports = {
 
   rules: {
     'no-console': 'off',
-    'no-debugger': 'off'
+    'no-debugger': 'off',
+    'vue/valid-v-if': 'off'
   },
 
   'extends': [

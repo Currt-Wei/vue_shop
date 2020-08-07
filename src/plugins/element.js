@@ -23,7 +23,8 @@ import {
   Pagination,
   MessageBox,
   Tag,
-  Tree
+  Tree,
+  Cascader
 } from 'element-ui'
 // 注册为全局可用
 Vue.use(Option)
@@ -54,5 +55,6 @@ Vue.use(MessageBox)
 Vue.use(Tag)
 Vue.use(Tree)
 Vue.use(Select)
+Vue.use(Cascader)
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
